@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="applicationinsights-agent">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/node_modules/azure-functions-core-tools/bin/workers/java/agent/applicationinsights-agent.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

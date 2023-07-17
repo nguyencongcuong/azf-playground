@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="azure-functions-java-worker">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/node_modules/azure-functions-core-tools/bin/workers/java/azure-functions-java-worker.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
