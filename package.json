@@ -10,7 +10,7 @@
     "test": "echo \"No tests yet...\""
   },
   "dependencies": {
-    "puppeteer": "^20.8.2"
+    "puppeteer": "^20.8.3"
   },
   "devDependencies": {
     "@azure/functions": "^3.0.0",
