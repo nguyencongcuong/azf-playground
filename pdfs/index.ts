@@ -23,34 +23,18 @@ const httpTrigger: AzureFunction = async function (
        */
 
       if(!browser) {
-        context.log('[puppeteer.launch] Start')
-        browser = process.env.APP_ENV && process.env.PLATFORM === 'linux'
-            ? await puppeteer.launch({
-              headless: "new",
-              executablePath: '/home/site/wwwroot/chrome/linux-117.0.5893.0/chrome-linux64/chrome',
-              args: ["--no-sandbox", "--disable-setuid-sandbox"],
-            })
-            : process.env.APP_ENV && process.env.PLATFORM === 'windows'
-            ? await puppeteer.launch({
-              headless: "new",
-              executablePath: '/home/site/wwwroot/chrome/win64-117.0.5908.0/chrome-win64/chrome',
-              args: ["--no-sandbox", "--disable-setuid-sandbox"],
-            })
-            : await puppeteer.launch({
-              headless: "new",
-            });
-        context.log('[puppeteer.launch] End')
+        browser = await puppeteer.launch({
+          headless: true,
+          executablePath: '/home/site/wwwroot/chrome/win64-117.0.5908.0/chrome-win64/chrome',
+          args: ["--no-sandbox", "--disable-setuid-sandbox"]
+        });
       }
 
       page = await browser.newPage();
       
-      context.log('[page.setContent] Start')
       await page.setContent(html);
-      context.log('[page.setContent] End')
 
-      context.log('[page.pdf] Start')
       const pdfBuffer = await page.pdf(options);
-      context.log('[page.pdf] End')
 
       await page.close();
 
@@ -71,3 +55,15 @@ const httpTrigger: AzureFunction = async function (
 };
 
 export default httpTrigger;
+
+// ? await puppeteer.launch({
+//   headless: "new",
+//   executablePath: '/home/site/wwwroot/chrome/linux-117.0.5893.0/chrome-linux64/chrome',
+//   args: ["--no-sandbox", "--disable-setuid-sandbox"],
+// })
+// : process.env.APP_ENV && process.env.PLATFORM === 'windows'
+// ? await puppeteer.launch({
+//   headless: "new",
+//   executablePath: '/home/site/wwwroot/chrome/win64-117.0.5908.0/chrome-win64/chrome',
+//   args: ["--no-sandbox", "--disable-setuid-sandbox"],
+// })
